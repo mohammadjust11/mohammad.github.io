@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Mohammed Kamal Mahmoud Darawsheh">
+  <title>Contact | محمد كمال محمود دراوشه — Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="contact-page">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">M</span><span>Cybersecurity<br><small>Student Portfolio</small></span></a>
+    <nav aria-label="Main navigation"><a href="index.html">Home</a><a class="active" href="contact.html">Contact me <span>↗</span></a></nav>
+  </header>
+
+  <main class="contact-main wrap">
+    <section class="contact-intro"><p class="eyebrow"><span class="status-dot"></span> OPEN TO GOOD CONVERSATIONS</p><h1>Let’s start a<br><em>conversation.</em></h1><p class="lead">Have a question, an opportunity, or an interesting security idea? I’d love to hear from you.</p><div class="contact-aside"><span class="aside-line"></span><div><small>PREFER EMAIL?</small><a href="mailto:mkdarawsheh23@cit.just.edu.jo">mkdarawsheh23@cit.just.edu.jo ↗</a></div></div><div class="contact-decoration">HELLO<span>!</span></div></section>
+    <section class="form-card"><div class="form-heading"><p class="eyebrow">CONTACT FORM <span>—</span> 01</p><h2>Send me a message</h2><p>Fields marked with <b>*</b> are required.</p></div>
+      <form id="contactForm" novalidate>
+        <div class="field"><label for="fullName">Full name <span>*</span></label><input id="fullName" name="fullName" type="text" placeholder="Your name" autocomplete="name" required><small class="error" id="nameError"></small></div>
+        <div class="field"><label for="email">Email address <span>*</span></label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required><small class="error" id="emailError"></small></div>
+        <div class="field"><label for="country">Country <span>*</span></label><input id="country" name="country" type="text" placeholder="Your country" autocomplete="country-name" required><small class="error" id="countryError"></small></div>
+        <div class="field"><label for="comments">Your comments <span>*</span></label><textarea id="comments" name="comments" rows="4" placeholder="What’s on your mind?" required></textarea><small class="error" id="commentsError"></small></div>
+        <button class="button submit-button" type="submit">Submit message <span>↗</span></button>
+        <p class="form-note">Your message helps start a meaningful conversation.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><a class="brand" href="index.html"><span class="brand-mark">M</span><span>Cybersecurity<br><small>Student Portfolio</small></span></a><span>© 2026 محمد كمال محمود دراوشه · SID 169284</span><a href="index.html">Back to home ↑</a></footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const fields = [
+      { id: 'fullName', error: 'nameError', message: 'Please enter your full name.' },
+      { id: 'email', error: 'emailError', message: 'Please enter a valid email address.' },
+      { id: 'country', error: 'countryError', message: 'Please enter your country.' },
+      { id: 'comments', error: 'commentsError', message: 'Please add your comments.' }
+    ];
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      let isValid = true;
+      fields.forEach(function (field) {
+        const input = document.getElementById(field.id);
+        const error = document.getElementById(field.error);
+        const value = input.value.trim();
+        const fieldIsValid = value !== '' && (field.id !== 'email' || input.validity.valid);
+        error.textContent = fieldIsValid ? '' : field.message;
+        input.setAttribute('aria-invalid', String(!fieldIsValid));
+        if (!fieldIsValid) isValid = false;
+      });
+      if (isValid) {
+        alert('Thank you! Your form has been submitted successfully.');
+        form.reset();
+        fields.forEach(function (field) { document.getElementById(field.id).removeAttribute('aria-invalid'); });
+      }
+    });
+  </script>
+</body>
+</html>
